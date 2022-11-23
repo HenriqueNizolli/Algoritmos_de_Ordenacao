@@ -14,7 +14,7 @@ namespace AlgoritmosOrdenacao.src
 
             int[] aux = vg.DescendingOrder(100000);
 
-            MySort.MergeSort(aux);
+            MySort.QuickSort(aux);
 
             for (int i = 0; i < aux.Length; i++)
             {

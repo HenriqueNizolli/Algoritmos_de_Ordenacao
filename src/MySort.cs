@@ -142,46 +142,33 @@ namespace AlgoritmosOrdenacao.src
 
         private static void QuickSort(int[] vector, int left, int right)
         {
-            int pivot = 0;
             if (left < right)
             {
-                pivot = QuickSortPatition(vector, left, right);
-                if (pivot > 1)
-                {
-                    QuickSort(vector, left, pivot - 1);
-                }
-                if (pivot + 1 < right)
-                {
-                    QuickSort(vector, pivot + 1, right);
-                }
+                int pivot = QuickSortPatition(vector, left, right);
+                QuickSort(vector, left, pivot - 1);
+                QuickSort(vector, pivot + 1, right);
             }
         }
 
         private static int QuickSortPatition(int[] vector, int left, int right)
         {
+            int pivot = vector[right];
+            int i = (left - 1);
             int aux = 0;
-            int pivot = vector[left];
-            while (true)
+            for (int j = left; j <= right - 1; j++)
             {
-                while (vector[left] < pivot)
+                if (vector[j] < pivot)
                 {
-                    left++;
-                }
-                while (vector[right] > pivot)
-                {
-                    right--;
-                }
-                if (left < right)
-                {
-                    aux = vector[right];
-                    vector[right] = vector[left];
-                    vector[left] = aux;
-                }
-                else
-                {
-                    return right;
+                    i++;
+                    aux = vector[i];
+                    vector[i] = vector[j];
+                    vector[j] = aux;
                 }
             }
+            aux = vector[i+1];
+            vector[i+1] = vector[right];
+            vector[right] = aux;
+            return (i + 1);
         }
     }
 }
