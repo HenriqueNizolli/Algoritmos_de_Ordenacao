@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -92,58 +93,45 @@ namespace AlgoritmosOrdenacao.src
 
         private static void MergeSort(int[] vector, int left, int right)
         {
-            if (left < right)
+            if (right > left)
             {
-                int midle = (left + (right - 1)) / 2;
+                int midle = (right + left) / 2;
                 MergeSort(vector, left, midle);
-                MergeSort(vector, midle + 1, right);
-                MergeSortMerge(vector, left, midle, right);
+                MergeSort(vector, (midle + 1), right);
+                MergeSortMerge(vector, left, (midle + 1), right);
             }
         }
 
         private static void MergeSortMerge(int[] vector, int left, int midle, int right)
         {
+            int[] aux = new int[vector.Length];
             int i = 0;
-            int j = 0;
-            int k = 0;
-            int[] vectorleft = new int[midle - left + 1];
-            int[] vectorright = new int[right - midle];
-            for (i = 0; i < vectorleft.Length; i++)
+            int eol = (midle - 1);
+            int pos = left;
+            int num = (right - left + 1);
+            while ((left <= eol) && (midle <= right))
             {
-                vectorleft[i] = vector[left + i];
-            }
-            for (i = 0; i < vectorleft.Length; i++)
-            {
-                vectorright[i] = vector[midle + 1 + i];
-            }
-            i = 0;
-            j = 0;
-            k = left;
-            while (i < vectorleft.Length && j < vectorright.Length)
-            {
-                if (vectorleft[i] <= vectorright[j])
+                if (vector[left] <= vector[midle])
                 {
-                    vector[k] = vectorleft[i];
-                    i++;
+                    aux[pos++] = vector[left++];
                 }
                 else
                 {
-                    vector[k] = vectorright[j];
-                    j++;
+                    aux[pos++] = vector[midle++];
                 }
-                k++;
             }
-            while (i < vectorleft.Length)
+            while (left <= eol)
             {
-                vector[k] = vectorleft[i];
-                i++;
-                k++;
+                aux[pos++] = vector[left++];
             }
-            while (j < vectorright.Length)
+            while (midle <= right)
             {
-                vector[k] = vectorright[j];
-                j++;
-                k++;
+                aux[pos++] = vector[midle++];
+            }
+            for (i = 0; i < num; i++)
+            {
+                vector[right] = aux[right];
+                right--;
             }
         }
 
@@ -171,9 +159,8 @@ namespace AlgoritmosOrdenacao.src
 
         private static int QuickSortPatition(int[] vector, int left, int right)
         {
-            int pivot = 0;
             int aux = 0;
-            pivot = vector[left];
+            int pivot = vector[left];
             while (true)
             {
                 while (vector[left] < pivot)

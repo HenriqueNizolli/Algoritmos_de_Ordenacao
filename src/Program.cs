@@ -10,7 +10,17 @@ namespace AlgoritmosOrdenacao.src
     {
         static void Main(string[] args)
         {
+            VectorGenerator vg = new();
 
+            int[] aux = vg.DescendingOrder(100000);
+
+            MySort.MergeSort(aux);
+
+            for (int i = 0; i < aux.Length; i++)
+            {
+                Console.WriteLine(aux[i]);
+            }
+            Console.Read();
         }
     }
 }
