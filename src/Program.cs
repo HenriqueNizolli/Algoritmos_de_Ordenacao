@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace AlgoritmosOrdenacao.src
 {
@@ -12,7 +13,7 @@ namespace AlgoritmosOrdenacao.src
         {
             VectorGenerator vg = new();
 
-            int[] aux = vg.DescendingOrder(100000);
+            int[] aux = vg.DescendingOrder(1000);
 
             MySort.QuickSort(aux);
 
