@@ -1,97 +1,180 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Timers;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace AlgoritmosOrdenacao.src
 {
     internal class Teste
     {
-        System.Timers.Timer teste = new();
-        public List<Ficha> SortTeste(int range) 
+        private VectorGenerator vg = new();
+        private int[] best_reference;
+        private int[] normal_reference;
+        private int[] worst_reference;
+        private List<Ficha> resultado = new();
+        private Stopwatch sw = new Stopwatch();
+        private int range;
+
+        public Teste(int range)
         {
-            VectorGenerator vg = new();
-            int[] best = vg.AscendingOrder(range);
-            int[] normal = vg.RandomOrder(range);
-            int[] worst = vg.DescendingOrder(range);
-            
-            List<Ficha> resultado = new();
-            float aux = 0.0f;
+            this.best_reference = vg.AscendingOrder(range);
+            this.normal_reference = vg.RandomOrder(range);
+            this.worst_reference = vg.DescendingOrder(range);
+            this.range = range;
+        }
 
+        public void RunAllCases()
+        {
+            InsertionSortCases();
+            BubbleSortCases();
+            SelectionSortCases();
+            MergeSortCases();
+            ImprovedBubbleSortCases();
+            QuickSortCases();
+
+        }
+
+        public  void BubbleSortCases()
+        {
+            int[] best = this.best_reference;
+            int[] normal = this.normal_reference;
+            int[] worst = this.worst_reference;
+            sw.Reset();
+            sw.Start();
             MySort.BubbleSort(best);
-            resultado.Add(new Ficha($"Bubble Sort", "Best Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Bubble Sort", "Best Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.BubbleSort(normal);
-            resultado.Add(new Ficha($"Bubble Sort {range}", "Random Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Bubble Sort range", "Random Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.BubbleSort(worst);
-            resultado.Add(new Ficha($"Bubble Sort {range}", "Worst Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Bubble Sort range", "Worst Case", range, sw.ElapsedMilliseconds.ToString()));
+        }
 
-            aux = 0.0f;
+        public  void ImprovedBubbleSortCases()
+        {
+            int[] best = this.best_reference;
+            int[] normal = this.normal_reference;
+            int[] worst = this.worst_reference;
+            sw.Reset();
+            sw.Start();
             MySort.ImprovedBubbleSort(best);
-            resultado.Add(new Ficha($"Improved Bubble Sort", "Best Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Improved Bubble Sort", "Best Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.ImprovedBubbleSort(normal);
-            resultado.Add(new Ficha($"Improved Bubble Sort", "Random Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Improved Bubble Sort", "Random Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.ImprovedBubbleSort(worst);
-            resultado.Add(new Ficha($"Improved Bubble Sort", "Worst Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Improved Bubble Sort", "Worst Case", range, sw.ElapsedMilliseconds.ToString()));
+        }
 
-            aux = 0.0f;
+        public  void InsertionSortCases()
+        {
+            int[] best = this.best_reference;
+            int[] normal = this.normal_reference;
+            int[] worst = this.worst_reference;
+            sw.Reset();
+            sw.Start();
             MySort.InsertionSort(best);
-            resultado.Add(new Ficha($"Insertion Sort", "Best Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Insertion Sort", "Best Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.InsertionSort(normal);
-            resultado.Add(new Ficha($"Insertion Sort", "Random Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Insertion Sort", "Random Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.InsertionSort(worst);
-            resultado.Add(new Ficha($"Insertion Sort", "Worst Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Insertion Sort", "Worst Case", range, sw.ElapsedMilliseconds.ToString()));
+        }
 
-            aux = 0.0f;
+        public  void SelectionSortCases()
+        {
+            int[] best = this.best_reference;
+            int[] normal = this.normal_reference;
+            int[] worst = this.worst_reference;
+            sw.Reset();
+            sw.Start();
             MySort.SelectionSort(best);
-            resultado.Add(new Ficha($"Selection Sort", "Best Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Selection Sort", "Best Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.SelectionSort(normal);
-            resultado.Add(new Ficha($"Selection Sort", "Random Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Selection Sort", "Random Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.SelectionSort(worst);
-            resultado.Add(new Ficha($"Selection Sort", "Worst Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Selection Sort", "Worst Case", range, sw.ElapsedMilliseconds.ToString()));
+        }
 
-            aux = 0.0f;
+        public  void MergeSortCases() 
+        {
+            Thread thread = new(MergeSort, 20000000);
+            thread.Start();
+        }
+
+        private void MergeSort()
+        {
+            int[] best = this.best_reference;
+            int[] normal = this.normal_reference;
+            int[] worst = this.worst_reference;
+            sw.Reset();
+            sw.Start();
             MySort.MergeSort(best);
-            resultado.Add(new Ficha($"Merge Sort", "Best Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Merge Sort", "Best Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.MergeSort(normal);
-            resultado.Add(new Ficha($"Merge Sort", "Random Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Merge Sort", "Random Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.MergeSort(worst);
-            resultado.Add(new Ficha($"Merge Sort", "Worst Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Merge Sort", "Worst Case", range, sw.ElapsedMilliseconds.ToString()));
+        }
 
-            aux = 0.0f;
+        public  void QuickSortCases() 
+        {
+            int[] best = this.best_reference;
+            int[] normal = this.normal_reference;
+            int[] worst = this.worst_reference;
+            sw.Reset();
+            sw.Start();
             MySort.QuickSort(best);
-            resultado.Add(new Ficha($"Quick Sort", "Best Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Quick Sort", "Best Case", range, sw.ElapsedMilliseconds.ToString()));
 
-            aux = 0.0f;
+            sw.Restart();
             MySort.QuickSort(normal);
-            resultado.Add(new Ficha($"Quick Sort", "Random Case", range, aux));
-
-            aux = 0.0f;
+            sw.Stop();
+            resultado.Add(new Ficha($"Quick Sort", "Random Case", range, sw.ElapsedMilliseconds.ToString()));
+ 
+            sw.Restart();
             MySort.QuickSort(worst);
-            resultado.Add(new Ficha($"Quick Sort", "Best Case", range, aux));
+            sw.Stop();
+            resultado.Add(new Ficha($"Quick Sort", "Best Case", range, sw.ElapsedMilliseconds.ToString()));
+        }
 
-            return resultado;
+        public  List<Ficha> GetResultado() 
+        {
+            return this.resultado;
         }
     }
 }

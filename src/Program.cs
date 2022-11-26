@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AlgoritmosOrdenacao.src
 {
@@ -11,17 +13,16 @@ namespace AlgoritmosOrdenacao.src
     {
         static void Main(string[] args)
         {
-            VectorGenerator vg = new();
+            Teste first = new(1000000);
+            first.RunAllCases();
+            first.ImprovedBubbleSortCases();
+           
 
-            int[] aux = vg.DescendingOrder(1000);
-
-            MySort.QuickSort(aux);
-
-            for (int i = 0; i < aux.Length; i++)
+            List<Ficha> aux = new(first.GetResultado());
+            foreach (Ficha item in aux)
             {
-                Console.WriteLine(aux[i]);
+                Console.WriteLine(item.ToString());
             }
-            Console.Read();
         }
-    }
+    } 
 }
