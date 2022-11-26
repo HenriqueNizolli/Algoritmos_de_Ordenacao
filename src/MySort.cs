@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AlgoritmosOrdenacao.src
 {
     internal class MySort
     {
-        public static void BubbleSort(int[] vector)
+        public static long BubbleSort(int[] vector)
         {
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
             int aux = 0;
             for (int i = 0; i < vector.Length; i++)
             {
@@ -20,10 +23,14 @@ namespace AlgoritmosOrdenacao.src
                     }
                 }
             }
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
 
-        public static void ImprovedBubbleSort(int[] vector)
+        public static long ImprovedBubbleSort(int[] vector)
         {
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
             int aux = 0;
             bool indicator = true;
             for (int i = 0; i < vector.Length && indicator == true; i++)
@@ -40,10 +47,14 @@ namespace AlgoritmosOrdenacao.src
                     }
                 }
             }
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
 
-        public static void InsertionSort(int[] vector)
+        public static long InsertionSort(int[] vector)
         {
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
             int aux = 0;
             int j = 0;
             for (int i = 0; i < vector.Length; i++)
@@ -57,10 +68,14 @@ namespace AlgoritmosOrdenacao.src
                     j--;
                 }
             }
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
 
-        public static void SelectionSort(int[] vector)
+        public static long SelectionSort(int[] vector)
         {
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
             int aux = 0;
             int jmin = 0;
             for (int i = 0; i < vector.Length; i++)
@@ -80,11 +95,17 @@ namespace AlgoritmosOrdenacao.src
                     vector[jmin] = aux;
                 }
             }
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
 
-        public static void MergeSort(int[] vector)
+        public static long MergeSort(int[] vector)
         {
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
             MergeSort(vector, 0, vector.Length - 1);
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
 
         private static void MergeSort(int[] vector, int left, int right)
@@ -131,9 +152,13 @@ namespace AlgoritmosOrdenacao.src
             }
         }
 
-        public static void QuickSort(int[] vector)
+        public static long QuickSort(int[] vector)
         {
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
             QuickSort(vector, 0, vector.Length - 1);
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
 
         private static void QuickSort(int[] vector, int left, int right)

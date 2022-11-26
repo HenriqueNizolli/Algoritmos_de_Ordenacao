@@ -4,8 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace AlgoritmosOrdenacao.src
 {
@@ -13,13 +11,28 @@ namespace AlgoritmosOrdenacao.src
     {
         static void Main(string[] args)
         {
-            Teste first = new(1000000);
+            /*
+            Teste first = new(1000);
             first.RunAllCases();
-            first.ImprovedBubbleSortCases();
-           
-
             List<Ficha> aux = new(first.GetResultado());
             foreach (Ficha item in aux)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine();
+            Teste second = new(10000);
+            second.RunAllCases();
+            List<Ficha> auxs = new(second.GetResultado());
+            foreach (Ficha item in auxs)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            */
+            Console.WriteLine();
+            Teste th = new(10000);
+            th.RunAllCases();
+            List<Ficha> auxt = new(th.GetResultado());
+            foreach (Ficha item in auxt)
             {
                 Console.WriteLine(item.ToString());
             }
