@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AlgoritmosOrdenacao.src
+﻿namespace AlgoritmosOrdenacao.src
 {
     internal class Ficha
     {
@@ -11,15 +9,15 @@ namespace AlgoritmosOrdenacao.src
 
         public Ficha(String nome, String tipo, int tamanho, long tempo)
         {
-            this.Nome = nome;
-            this.Tipo = tipo;
-            this.Tamanho= tamanho;
-            this.Tempo = tempo;
+            Nome = nome;
+            Tipo = tipo;
+            Tamanho = tamanho;
+            Tempo = tempo;
         }
 
         public override string ToString()
         {
-            return $"| {this.Nome} | caso : {this.Tipo} | tamanho : {this.Tamanho} | tempo : {this.Tempo} ms |";
+            return $"| {this.Nome} \t| caso : {this.Tipo} \t| tamanho : {this.Tamanho} \t| tempo : {this.Tempo} ms \t|";
         }
     }
 }

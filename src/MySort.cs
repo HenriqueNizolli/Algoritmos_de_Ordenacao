@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace AlgoritmosOrdenacao.src
 {
@@ -101,11 +99,18 @@ namespace AlgoritmosOrdenacao.src
 
         public static long MergeSort(int[] vector)
         {
-            Stopwatch stopwatch = new();
-            stopwatch.Start();
-            MergeSort(vector, 0, vector.Length - 1);
-            stopwatch.Stop();
-            return stopwatch.ElapsedMilliseconds;
+            try
+            {
+                Stopwatch stopwatch = new();
+                stopwatch.Start();
+                MergeSort(vector, 0, vector.Length - 1);
+                stopwatch.Stop();
+                return stopwatch.ElapsedMilliseconds;
+            }
+            catch (StackOverflowException)
+            {
+                return -1;
+            }
         }
 
         private static void MergeSort(int[] vector, int left, int right)
@@ -154,11 +159,18 @@ namespace AlgoritmosOrdenacao.src
 
         public static long QuickSort(int[] vector)
         {
-            Stopwatch stopwatch = new();
-            stopwatch.Start();
-            QuickSort(vector, 0, vector.Length - 1);
-            stopwatch.Stop();
-            return stopwatch.ElapsedMilliseconds;
+            try
+            {
+                Stopwatch stopwatch = new();
+                stopwatch.Start();
+                QuickSort(vector, 0, vector.Length - 1);
+                stopwatch.Stop();
+                return stopwatch.ElapsedMilliseconds;
+            }
+            catch (StackOverflowException)
+            {
+                return -1;
+            }
         }
 
         private static void QuickSort(int[] vector, int left, int right)
@@ -186,8 +198,8 @@ namespace AlgoritmosOrdenacao.src
                     vector[j] = aux;
                 }
             }
-            aux = vector[i+1];
-            vector[i+1] = vector[right];
+            aux = vector[i + 1];
+            vector[i + 1] = vector[right];
             vector[right] = aux;
             return (i + 1);
         }

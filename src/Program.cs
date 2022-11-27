@@ -1,41 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AlgoritmosOrdenacao.src
+﻿namespace AlgoritmosOrdenacao.src
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             /*
-            Teste first = new(1000);
-            first.RunAllCases();
-            List<Ficha> aux = new(first.GetResultado());
-            foreach (Ficha item in aux)
+            Teste onek = new(1000);
+            onek.ImprovedBubbleSortCases();
+            onek.InsertionSortCases();
+            onek.SelectionSortCases();
+            onek.BubbleSortCases();
+            onek.MergeSortCases();
+            onek.QuickSortCases();
+            foreach (Ficha item in onek.GetResultado())
             {
                 Console.WriteLine(item.ToString());
             }
             Console.WriteLine();
-            Teste second = new(10000);
-            second.RunAllCases();
-            List<Ficha> auxs = new(second.GetResultado());
-            foreach (Ficha item in auxs)
-            {
-                Console.WriteLine(item.ToString());
-            }
             */
-            Console.WriteLine();
-            Teste th = new(10000);
-            th.RunAllCases();
-            List<Ficha> auxt = new(th.GetResultado());
-            foreach (Ficha item in auxt)
+            /*
+            Teste tenk = new(10000);
+            tenk.ImprovedBubbleSortCases();
+            tenk.InsertionSortCases();
+            tenk.SelectionSortCases();
+            tenk.BubbleSortCases();
+            tenk.MergeSortCases();
+            tenk.QuickSortCases();
+            foreach (Ficha item in tenk.GetResultado())
             {
                 Console.WriteLine(item.ToString());
             }
+            Console.WriteLine();
+            */
+            /*
+            Teste hundredk = new(100000);
+            hundredk.ImprovedBubbleSortCases();
+            hundredk.InsertionSortCases();
+            hundredk.SelectionSortCases();
+            hundredk.BubbleSortCases();
+            hundredk.MergeSortCases();
+            foreach (Ficha item in hundredk.GetResultado())
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine();
+            */
+            Teste onek = new(1000);
+            onek.MergeSortCases();
+            onek.ImprovedBubbleSortCases();
+            onek.InsertionSortCases();
+            foreach (Ficha item in onek.GetResultado())
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine();
         }
     } 
 }

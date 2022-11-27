@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace AlgoritmosOrdenacao.src
+﻿namespace AlgoritmosOrdenacao.src
 {
     internal class Teste
     {
@@ -20,24 +17,14 @@ namespace AlgoritmosOrdenacao.src
             this.range = range;
         }
 
-        public void RunAllCases()
-        {
-            BubbleSortCases();
-            ImprovedBubbleSortCases();
-            InsertionSortCases();
-            SelectionSortCases();
-            MergeSortCases();
-            QuickSortCases();
-        }
-
         public  void BubbleSortCases()
         {
             int[] best = this.best_reference;
             int[] normal = this.normal_reference;
             int[] worst = this.worst_reference;
             resultado.Add(new Ficha($"Bubble Sort", "Best Case", range, MySort.BubbleSort(best)));
-            resultado.Add(new Ficha($"Bubble Sort range", "Random Case", range, MySort.BubbleSort(normal)));
-            resultado.Add(new Ficha($"Bubble Sort range", "Worst Case", range, MySort.BubbleSort(worst)));
+            resultado.Add(new Ficha($"Bubble Sort", "Random Case", range, MySort.BubbleSort(normal)));
+            resultado.Add(new Ficha($"Bubble Sort", "Worst Case", range, MySort.BubbleSort(worst)));
         }
 
         public  void ImprovedBubbleSortCases()
