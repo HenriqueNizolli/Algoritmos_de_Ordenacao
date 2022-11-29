@@ -41,6 +41,7 @@
                 Console.WriteLine(item.ToString());
             }
             Console.WriteLine();
+            Console.ReadLine();
         }
     } 
 }
